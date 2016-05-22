@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RS232Controller">
+   <children>
+       <BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+           <bottom>
+               <AnchorPane prefHeight="30.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                   <children>
+                       <Button fx:id="btnExit" layoutX="510.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSubmitButtonExit" prefHeight="25.0" prefWidth="75.0" text="Exit" />
+                       <Button fx:id="btnConnect" layoutX="410.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSubmitButtonConnect" prefHeight="25.0" prefWidth="75.0" text="Connect" />
+                       <Button fx:id="btnReset" layoutX="310.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleSubmitButtonReset" prefHeight="25.0" prefWidth="75.0" text="Reset" />
+                   </children>
+               </AnchorPane>
+           </bottom>
+         <left>
+            <AnchorPane fx:id="settingsPanel" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="357.0" prefWidth="210.0" BorderPane.alignment="CENTER">
+               <children>
+                   <Label layoutX="10.0" layoutY="20.0" text="Select Bit Rate:" />
+                   <ComboBox fx:id="baudRate" layoutX="95.0" layoutY="20.0" prefHeight="25.0" prefWidth="100.0" />
+                   <Label layoutX="10.0" layoutY="130.0" text="Stop bits:" />
+                   <Label layoutX="10.0" layoutY="195.0" text="Parity:" />
+                   <Label layoutX="10.0" layoutY="75.0" text="Flow control:" />
+                   <HBox layoutX="220.0" layoutY="120.0" />
+                   <GridPane layoutX="100.0" layoutY="73.0" prefHeight="27.0" prefWidth="87.0">
+                       <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                       <children>
+                           <RadioButton fx:id="flowCtrOff" mnemonicParsing="false" prefHeight="17.0" prefWidth="49.0" text="Off" GridPane.columnIndex="1">
+                               <toggleGroup>
+                                   <ToggleGroup fx:id="flowCtr" />
+                               </toggleGroup>
+                           </RadioButton>
+                           <RadioButton fx:id="flowCtrOn" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="48.0" selected="true" text="On" toggleGroup="$flowCtr" />
+                       </children>
+                   </GridPane>
+                   <ComboBox fx:id="stopBits" layoutX="95.0" layoutY="130.0" prefWidth="100.0" />
+                   <ComboBox fx:id="parity" layoutX="95.0" layoutY="195.0" prefWidth="100.0" />
+                       <Label layoutX="10.0" layoutY="290.0" prefHeight="17.0" prefWidth="43.0" text="Ports:" />
+                  <ComboBox fx:id="dataBits" layoutX="95.0" layoutY="246.0" prefHeight="25.0" prefWidth="100.0" />
+                  <Label layoutX="13.0" layoutY="250.0" text="Databits:" />
+                  <Button fx:id="buttonApply" layoutX="100.0" layoutY="332.0" mnemonicParsing="false" onAction="#submitSettings" prefHeight="25.0" prefWidth="72.0" text="Apply" />
+                  <TextField fx:id="listPorts" layoutX="95.0" layoutY="286.0" prefHeight="25.0" prefWidth="100.0" />
+               </children>
+
+            </AnchorPane>
+         </left>
+         <center>
+               <AnchorPane fx:id="centerPane" onMouseEntered="#closeSideMenu" prefHeight="345.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+                   <children>
+                       <Label layoutX="73.0" layoutY="49.0" prefHeight="17.0" prefWidth="48.0" text="Input: " />
+                       <Label layoutX="69.0" layoutY="122.0" text="Output:" />
+                       <TextField fx:id="inputRS" layoutX="142.0" layoutY="45.0" prefHeight="25.0" prefWidth="300.0" />
+                       <TextArea fx:id="outputRS" editable="false" layoutX="142.0" layoutY="118.0" prefHeight="160.0" prefWidth="300.0" />
+                   </children>
+            </AnchorPane>
+         </center>
+         <top>
+               <MenuBar BorderPane.alignment="CENTER">
+                   <menus>
+                       <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                               <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                       </Menu>
+                   </menus>
+               </MenuBar>
+         </top>
+       </BorderPane>
+      <Region fx:id="regionOnMouse" layoutY="23.0" onMouseEntered="#openSideMenu" prefHeight="379.0" prefWidth="20.0" />
+   </children>
+</AnchorPane>
